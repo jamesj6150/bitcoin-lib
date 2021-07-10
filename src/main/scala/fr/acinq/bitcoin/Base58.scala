@@ -27,6 +27,9 @@ object Base58 {
     val PubkeyAddressSegnet = 30.toByte
     val ScriptAddressSegnet = 50.toByte
     val SecretKeySegnet = 158.toByte
+    val PubkeyAddressSignet = 111.toByte
+    val ScriptAddressSignet = 196.toByte
+    val SecretKeySignet = 239.toByte
   }
 
 }
