@@ -110,7 +110,7 @@ package object bitcoin {
   def computeP2PkhAddress(pub: PublicKey, chainHash: ByteVector32): String = {
     val hash = pub.hash160
     chainHash match {
-      case Block.RegtestGenesisBlock.hash | Block.TestnetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.PubkeyAddressTestnet, hash)
+      case Block.SignetGenesisBlock.hash | Block.RegtestGenesisBlock.hash | Block.TestnetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.PubkeyAddressTestnet, hash)
       case Block.LivenetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.PubkeyAddress, hash)
       case _ => throw new IllegalArgumentException("Unknown chain hash: " + chainHash)
     }
@@ -128,7 +128,7 @@ package object bitcoin {
     val script = Script.pay2wpkh(pub)
     val hash = Crypto.hash160(Script.write(script))
     chainHash match {
-      case Block.RegtestGenesisBlock.hash | Block.TestnetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.ScriptAddressTestnet, hash)
+      case Block.SignetGenesisBlock.hash | Block.RegtestGenesisBlock.hash | Block.TestnetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.ScriptAddressTestnet, hash)
       case Block.LivenetGenesisBlock.hash => Base58Check.encode(Base58.Prefix.ScriptAddress, hash)
       case _ => throw new IllegalArgumentException("Unknown chain hash: " + chainHash)
     }
