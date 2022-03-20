@@ -51,7 +51,7 @@ object KeyEncodingSpec {
 
   def isValidBech32(input: String): Boolean = Try {
     Bech32.decodeWitnessAddress(input) match {
-      case (hrp, 0, bin) if (hrp == "bc" || hrp == "tb" || hrp == "bcrt") && (bin.length == 20 || bin.length == 32) => true
+      case (hrp, 0, bin) if (hrp == "mona" || hrp == "tmona" || hrp == "rmona") && (bin.length == 20 || bin.length == 32) => true
       case _ => false
     }
   } getOrElse (false)
@@ -71,18 +71,18 @@ object KeyEncodingSpec {
           assert(version == Base58.Prefix.SecretKey || version == Base58.Prefix.SecretKeyTestnet)
           assert(data.take(32) == bin)
         } else encoded.head match {
-          case '1' | 'm' | 'n' =>
+          case 'M' | 'm' | 'n' =>
             val (version, data) = Base58Check.decode(encoded)
             assert(version == Base58.Prefix.PubkeyAddress || version == Base58.Prefix.PubkeyAddressTestnet)
             val OP_DUP :: OP_HASH160 :: OP_PUSHDATA(hash, _) :: OP_EQUALVERIFY :: OP_CHECKSIG :: Nil = Script.parse(bin)
             assert(data == hash)
-          case '2' | '3' =>
+          case 'P' | '3' =>
             val (version, data) = Base58Check.decode(encoded)
             assert(version == Base58.Prefix.ScriptAddress || version == Base58.Prefix.ScriptAddressTestnet)
             val OP_HASH160 :: OP_PUSHDATA(hash, _) :: OP_EQUAL :: Nil = Script.parse(bin)
             assert(data == hash)
-          case _ => encoded.substring(0, 2) match {
-            case "bc" | "tb" =>
+          case _ => encoded.substring(0, 4) match {
+            case "mona" | "tmon" =>
               val (_, tag, program) = Bech32.decodeWitnessAddress(encoded)
               val op :: OP_PUSHDATA(hash, _) :: Nil = Script.parse(bin)
               assert(Script.simpleValue(op) == tag)

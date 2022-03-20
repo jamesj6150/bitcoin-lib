@@ -1,13 +1,17 @@
-# Simple Scala Bitcoin Library
+# Attention
 
-Simple bitcoin library written in Scala.
+This repository is fork of bitcoin-lib.
 
-[![Build Status](https://github.com/ACINQ/bitcoin-lib/workflows/Build%20&%20Test/badge.svg)](https://github.com/ACINQ/bitcoin-lib/actions?query=workflow%3A%22Build+%26+Test%22)
+# Simple Scala Monacoin Library
+
+Simple monacoin library written in Scala.
+
+[![Build Status](https://github.com/wakiyamap/monacoin-lib/actions/workflows/scala.yml/badge.svg)](https://github.com/wakiyamap/monacoin-lib/actions/workflows/scala.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 ## Overview
 
-This is a simple scala library which implements most of the bitcoin protocol:
+This is a simple scala library which implements most of the monacoin protocol:
 
 * base58 encoding/decoding
 * block headers, block and tx parsing

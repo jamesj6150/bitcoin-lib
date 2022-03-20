@@ -18,9 +18,9 @@ import scodec.bits.ByteVector
 object Base58 {
 
   object Prefix {
-    val PubkeyAddress = 0.toByte
-    val ScriptAddress = 5.toByte
-    val SecretKey = 128.toByte
+    val PubkeyAddress = 50.toByte
+    val ScriptAddress = 55.toByte
+    val SecretKey = 176.toByte // was 178 on 0.10.x
     val PubkeyAddressTestnet = 111.toByte
     val ScriptAddressTestnet = 196.toByte
     val SecretKeyTestnet = 239.toByte

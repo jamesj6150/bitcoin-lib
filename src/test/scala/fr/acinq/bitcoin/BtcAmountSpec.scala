@@ -25,7 +25,7 @@ class BtcAmountSpec extends FunSuite {
 
   test("conversions overflow") {
     intercept[IllegalArgumentException] {
-      22e6 btc
+      10513e4 btc
     }
   }
 

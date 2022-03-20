@@ -57,7 +57,7 @@ case class MilliBtc(private val underlying: BigDecimal) extends BtcAmount with O
 }
 
 case class Btc(private val underlying: BigDecimal) extends BtcAmount with Ordered[Btc] {
-  require(underlying.abs <= 21e6, "amount must not be greater than 21 millions")
+  require(underlying.abs <= 10512e4, "amount must not be greater than 105.12 millions")
 
   // @formatter:off
   def +(other: Btc) = Btc(underlying + other.underlying)
@@ -89,5 +89,5 @@ case class Btc(private val underlying: BigDecimal) extends BtcAmount with Ordere
 object BtcAmount {
   val Coin = 100000000L
   val Cent = 1000000L
-  val MaxMoney = 21e6 * Coin
+  val MaxMoney = 10512e4 * Coin
 }

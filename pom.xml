@@ -3,9 +3,9 @@
     <groupId>fr.acinq</groupId>
     <artifactId>bitcoin-lib_2.13</artifactId>
     <packaging>jar</packaging>
-    <version>0.19</version>
-    <description>Simple Scala Bitcoin library</description>
-    <url>https://github.com/ACINQ/bitcoin-lib</url>
+    <version>0.19-mona1</version>
+    <description>Simple Scala Monacoin library</description>
+    <url>https://github.com/wakiyamap/bitcoin-lib</url>
     <name>bitcoin-lib</name>
 
     <properties>
@@ -16,17 +16,17 @@
 
     <licenses>
         <license>
-            <url>https://raw.github.com/ACINQ/bitcoin-lib/master/LICENSE</url>
+            <url>https://raw.github.com/wakiyamap/bitcoin-lib/master/LICENSE</url>
             <name>Apache License</name>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:ACINQ/bitcoin-lib.git</connection>
-        <developerConnection>scm:git:git@github.com:ACINQ/bitcoin-lib.git</developerConnection>
-        <url>git@github.com:ACINQ/bitcoin-lib.git</url>
-        <tag>v0.19</tag>
+        <connection>scm:git:git@github.com:wakiyamap/bitcoin-lib.git</connection>
+        <developerConnection>scm:git:git@github.com:wakiyamap/bitcoin-lib.git</developerConnection>
+        <url>git@github.com:wakiyamap/bitcoin-lib.git</url>
+        <tag>v0.19-mona1</tag>
     </scm>
 
     <developers>
@@ -36,13 +36,20 @@
         <developer>
             <id>pm47</id>
         </developer>
+        <developer>
+            <id>cryptcoin.junkey</id>
+        </developer>
+        <developer>
+            <id>monapu</id>
+        </developer>
     </developers>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/wakiyamap/bitcoin-lib</url>
+        </repository>
     </distributionManagement>
 
     <build>
@@ -142,17 +149,6 @@
                     <localCheckout>true</localCheckout>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -234,24 +230,6 @@
                     <value>true</value>
                 </property>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 
